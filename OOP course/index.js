@@ -211,3 +211,43 @@ const sw = new Stopwatch();
 
 //new Stopwatch exercise
 
+
+function Stopwatch3() {
+
+    let duration = 0;
+    let running = false;
+    let startTime, stopTime;
+
+    this.start = function() {
+        if(running) {
+            throw new Error("Stopwatch has already started!");
+        }
+        startTime= new Date();
+        running = true;
+    };
+
+    this.stop = function() {
+        if(!running) {
+            throw new Error("Stopwatch has already been stoped!");
+        }
+        stopTime = new Date();
+        duration += (stopTime.getTime() - startTime.getTime()) / 1000;
+        running = false;
+    }
+
+    this.reset = function() {
+        duration = 0;
+        running = false;
+        startTime = 0;
+        stopTime = 0;
+    }
+
+    Object.defineProperty(this, "duration", {
+        get: function() {
+            return duration;
+        }
+    })
+}
+
+const sw3 = new Stopwatch3();
+
