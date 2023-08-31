@@ -251,3 +251,52 @@ function Stopwatch3() {
 
 const sw3 = new Stopwatch3();
 
+
+
+//from start 31.08.2023
+
+const circle3 = {};
+
+circle3.radius = 1;
+circle3.location = {
+    x: 1,
+    y: 1,
+};
+
+circle3.draw = function() {
+    console.log("draw")
+}
+
+
+//Factory function:
+
+const crateCircle = (radious, x, y) => {
+    return {
+        radious,
+        location: {
+            x,
+            y
+        },
+        draw() {
+            console.log("draw me")
+        }
+    }
+}
+
+const bigCircle = crateCircle(99, 7, 8);
+
+//Constructor function:
+
+function Circle3(radious, x, y) {
+    this.radious = radious;
+    this.location = {x: x, y: y};
+    this.draw = function() {
+        console.log("small circle")
+    };
+}
+
+const smallCircle3 = new Circle3(2, 6, 7)
+
+Circle3.prototype.reshape = function() {
+    console.log("I am now a rectangle")
+}
