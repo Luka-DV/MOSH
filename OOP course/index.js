@@ -253,7 +253,7 @@ const sw3 = new Stopwatch3();
 
 
 
-//from start 31.08.2023
+//+++++++++++from start 31.08.2023
 
 const circle3 = {};
 
@@ -300,3 +300,86 @@ const smallCircle3 = new Circle3(2, 6, 7)
 Circle3.prototype.reshape = function() {
     console.log("I am now a rectangle")
 }
+
+
+function Circle6(radious) {
+    this.name = "bob";
+    this.radious = radious;
+    this.draw = function(word) {
+        console.log(word)
+    }
+}
+
+ function Circle7(rad) {
+    this.rad = rad;
+ }
+
+ const circle1 = new Circle6(4);
+
+ function draw(greet) {
+    return this.name + " " + greet
+ }
+
+ console.log(draw.call(circle1, "hello"))
+
+ const num = 10;
+
+ function increaseNUM(num) {
+    return ++num;
+ }
+
+ console.log(increaseNUM(num))
+
+ console.log(num)
+
+
+
+
+ //Exercise:
+
+
+
+function Stopwatch2() {
+    let duration = 0;
+    let isRunning = false;
+    let startCounting
+   
+
+    function getTimeInSec() {
+        return new Date().getTime()/1000
+    }
+
+    this.reset = function() {
+        duration = 0;
+        isRunning = false;
+        startCounting = null;
+    }
+
+    this.start = function() {
+        if(isRunning) {
+            throw new Error("SW has already started.")
+        };
+        isRunning = true;
+        startCounting = getTimeInSec()
+    }
+
+    this.stop = function() {
+        if(!isRunning) {
+            throw new Error("SW is not started.")
+        };
+        isRunning = false;
+        duration += getTimeInSec() - startCounting
+    }
+
+    Object.defineProperty(this, "duration", {
+        get: function() {
+            if(isRunning === true) {
+                return duration + (getTimeInSec() - startCounting )
+            }
+            return duration 
+        }
+    })
+}
+
+ const swa = new Stopwatch2()
+
