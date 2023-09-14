@@ -373,7 +373,7 @@ function Stopwatch2() {
 
     Object.defineProperty(this, "duration", {
         get: function() {
-            if(isRunning === true) {
+            if(isRunning) {
                 return duration + (getTimeInSec() - startCounting )
             }
             return duration 
